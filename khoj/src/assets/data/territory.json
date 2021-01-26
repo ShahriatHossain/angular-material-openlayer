@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Territory1",
+        "description": null,
+        "parent_territory": null
+    },
+    {
+        "id": 2,
+        "name": "Territory2",
+        "description": null,
+        "parent_territory": null
+    },
+    {
+        "id": 3,
+        "name": "Territory3",
+        "description": null,
+        "parent_territory": null
+    }
+]

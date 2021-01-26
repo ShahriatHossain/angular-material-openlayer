@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col">
+        <div [hidden]="defaultViewType != viewType.Road">
+            <a href="javascript:void(0)" class="round-view" (click)="switchView(viewType.Satellite)" matTooltip="Road View" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">
+                <img class="round-view-img" src="../../../../assets/images/road.jpg" />
+            </a>
+        </div>
+        <div [hidden]="defaultViewType != viewType.Satellite">
+            <a href="javascript:void(0)" class="round-view" (click)="switchView(viewType.Road)" matTooltip="Satellite View" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">
+                <img class="round-view-img" src="../../../../assets/images/sattelite.jpg" />
+            </a>
+        </div>
+    </div>
+</div>

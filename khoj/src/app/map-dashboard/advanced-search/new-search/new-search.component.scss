@@ -1,0 +1,36 @@
+@import '../../../app.component.scss';
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .pushpin-container {
+    margin-left: -15px;
+    margin-top: 15px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+
+  ::ng-deep .mat-menu-container {
+    max-width: 50px !important;
+  }
+
+  .pushpin-item {
+    width: 24px;
+    height: 24px;
+  }
+
+  .search-custom-container {
+    padding-top: 15px;
+    border-top: #EAEAEA 1px solid;
+    padding-right: 52px;
+    padding-left: 20px;
+    text-align: right !important;
+}

@@ -1,0 +1,31 @@
+.sidebar-container {
+    margin-top: -20px;
+    margin-left: -20px;
+    border-radius: 0;
+}
+
+.side-panel {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    top: 54px;
+}
+
+.top-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 54px;
+    z-index: 4;
+}
+
+// .topbar {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     z-index: 4;
+// }
+

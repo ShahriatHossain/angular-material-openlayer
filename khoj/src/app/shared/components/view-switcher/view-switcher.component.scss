@@ -1,0 +1,19 @@
+.round-view {
+    border-radius: 56px;
+    height: 56px;
+    vertical-align: middle;
+}
+
+.round-view-img {
+    border-radius: 35px;
+    display: inline;
+    height: 70px;
+    margin: 2px 8px 2px 2px;
+    -o-object-fit: cover;
+    object-fit: cover;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 70px;
+    border: 2px solid #ffffff;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+}

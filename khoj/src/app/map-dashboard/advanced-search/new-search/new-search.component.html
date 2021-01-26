@@ -1,0 +1,243 @@
+<!-- Section for Search Fields --->
+<div class="flex-parent">
+    <div class="w-410px flex-content">
+        <div class="w-377px h-455px">
+            <div class="card card-custom">
+                <div class="card-header card-custom-header">
+                    <div class="row">
+                        <div class="col-11">Search By</div>
+                        <div class="col-1">
+                            <a href="javascript:void(0)" (click)="reset()" matTooltip="Reset" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom" class="ml-m15">
+                                <i class="material-icons">
+                                    refresh
+                                </i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header card-search-by-header">
+                    <mat-button-toggle-group #group="matButtonToggleGroup" [value]="search.type" (change)="onSearchTypeChange(group.value)">
+                        <mat-button-toggle [value]="searchType.SearchByAddress" aria-label="Text align left">
+                            <i class="fa fa-location-arrow font-aw-icon-custom" aria-hidden="true"></i> Address
+                        </mat-button-toggle>
+                        <mat-button-toggle [value]="searchType.SearchByRegion" aria-label="Text align center">
+                            <i class="fa fa-globe font-aw-icon-custom" aria-hidden="true"></i> Region
+                        </mat-button-toggle>
+                        <mat-button-toggle [value]="searchType.SearchByTerritory" aria-label="Text align right">
+                            <i class="fa fa-map-pin font-aw-icon-custom" aria-hidden="true"></i> Territory
+                        </mat-button-toggle>
+                        <mat-button-toggle [value]="searchType.DrawAndSearch" aria-label="Text align justify">
+                            <i class="fa fa-pencil font-aw-icon-custom" aria-hidden="true"></i> Draw
+                        </mat-button-toggle>
+                    </mat-button-toggle-group>
+    
+                </div>
+                <div class="card-body">
+                    <div class="example-selected-value">
+                        <div class="row" [hidden]="group.value != searchType.SearchByAddress">
+                            <div class="col example-form">
+                                <div class="row ">
+                                    <div class="col-11">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>City, State, Post Code, Country</mat-label>
+                                            <div id="searchBoxContainer">
+                                                <input id="searchBox" matInput
+                                                    placeholder="Ex. Perth, Western Australia, Australia"
+                                                    [(ngModel)]="search.address" value="">
+                                            </div>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-1"><a href="#" class="ml-m15"><i class="material-icons mt-15"
+                                        matTooltip="My Location" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">my_location</i></a></div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Located Within</mat-label>
+                                            <input matInput placeholder="Ex. 20" [(ngModel)]="search.proximity" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Proximity Type</mat-label>
+                                            <mat-select [(ngModel)]="search.proximityType">
+                                                <mat-option *ngFor="let option of proximityTypes" [value]="option.value">
+                                                    {{option.text}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" [hidden]="group.value != searchType.SearchByRegion">
+                            <div class="col example-form">
+                                <div class="row ">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>City</mat-label>
+                                            <input matInput placeholder="Ex. Perth" [(ngModel)]="search.city" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>State</mat-label>
+                                            <input matInput placeholder="Ex. Western Australia" [(ngModel)]="search.state"
+                                                value="">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+    
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Post Code</mat-label>
+                                            <input matInput placeholder="Ex. 1209" [(ngModel)]="search.postCode" value="">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Country</mat-label>
+                                            <mat-select [(ngModel)]="search.country">
+                                                <mat-option *ngFor="let country of countries" [value]="country">{{country}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" [hidden]="group.value != searchType.SearchByTerritory">
+                            <div class="col example-form">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Territory</mat-label>
+                                    <mat-select [(ngModel)]="search.territory">
+                                        <mat-option *ngFor="let territory of territories" [value]="territory.id">
+                                            {{territory.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row" [hidden]="group.value != searchType.DrawAndSearch">
+                            <div class="col">
+                                <div class="example-button-row">
+                                    <button mat-stroked-button class="padding-10" (click)="setDrawingMode(drawingModes.Polygon)">
+                                        <i class="material-icons" matTooltip="Polygon" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">
+                                            panorama_wide_angle
+                                        </i>
+                                    </button>
+                                    <button mat-stroked-button class="padding-10" (click)="setDrawingMode(drawingModes.Circle)">
+                                        <i class="material-icons" matTooltip="Circle" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">
+                                            panorama_fish_eye
+                                        </i>
+                                    </button>
+                                    <button mat-stroked-button class="padding-10" (click)="setDrawingMode(drawingModes.Erase)">
+                                        <i class="material-icons" matTooltip="Erase" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom">
+                                            clear
+                                        </i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Section for Category --->
+            <div class="card card-custom">
+                <div class="card-header card-custom-header">
+                    <div class="row">
+                        <div class="col-11">Categories</div>
+                        <div class="col-1">
+                            <a href="javascript:void(0)" (click)="addCategory()" matTooltip="Add Category" [matTooltipPosition]="toolPosition" matTooltipClass="tooltip-custom" class="ml-m15">
+                                <i class="material-icons">
+                                    add_circle_outline
+                                </i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mb-10" *ngFor="let category of search.categories; let idx=index">
+                <div class="card-header card-search-by-header">
+                    <div class="example-button-row padding-5 float-right">
+                        <a href="javascript:void(0)" (click)="removeCategory(category)" [hidden]="idx === 0">
+                            <i class="fa fa-trash-o padding_right-8 font_size-16 cursor-custom" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-eye padding_right-8 font_size-16 cursor-custom" aria-hidden="true"></i>
+                        </a>
+                    </div>
+    
+                </div>
+                <div class="card-body">
+                    <div class="example-selected-value">
+                        <div class="row">
+                            <div class="col example-form">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <mat-form-field class="example-full-width">
+                                            <mat-label>Select Type</mat-label>
+                                            <mat-select [(ngModel)]="category.datasourceId">
+                                                <mat-option *ngFor="let source of datasources" value="{{source.id}}">
+                                                    {{source.displayName}}</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-select [(ngModel)]="category.iconType">
+                                                        <mat-option value="room" selected>
+                                                            Icon
+                                                        </mat-option>
+                                                        <mat-option value="palette">
+                                                            Color
+                                                        </mat-option>
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-2">
+                                                <a href="javascript:void(0)" [ngSwitch]="true">
+                                                    <span class="pushpin-container material-icons"
+                                                        *ngSwitchCase="category.iconType == 'palette'"
+                                                        [(colorPicker)]="category.color"
+                                                        [style.color]="category.color">palette</span>
+                                                    <img class="pushpin-container"
+                                                        *ngSwitchCase="category.iconType == 'room'"
+                                                        [matMenuTriggerFor]="pushpinPicker"
+                                                        [src]="category.icon.documentBody" />
+                                                </a>
+                                                <mat-menu #pushpinPicker="matMenu" class="mat-menu-container">
+                                                    <img *ngFor="let icon of pushpins"
+                                                        class="pushpin-item m-1 cursor-pinter" [src]="icon.documentBody"
+                                                        (click)="selectIcon(icon, category)" />
+                                                </mat-menu>
+    
+                                                <mat-menu #colorPicker="matMenu" class="mat-menu-container">
+                                                    <img *ngFor="let icon of pushpins"
+                                                        class="pushpin-item m-1 cursor-pinter" [src]="icon.documentBody"
+                                                        (click)="selectIcon(icon, category)" />
+                                                </mat-menu>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div  class="search-custom-container">
+        <button mat-flat-button color="primary" (click)="doSearch()"
+        class="btn_bg-color float-right margin_right-m20">Search</button>
+    </div>
+</div>
+
+

@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "fullname": "LESM Contact",
+        "phone": "555-0152",
+        "fax": "",
+        "website": "",
+        "parent_account": "",
+        "territory": "",
+        "email": "",
+        "latitude": -31.99967,
+        "longitude": 116.05403,
+        "street1": "ROOTH",
+        "street2": "",
+        "street3": "",
+        "postcode": "",
+        "city": "LESMURDIE",
+        "state": "WA",
+        "country": "Australia",
+        "primary_contact": "",
+        "address_composite": "ROOTH\r\nLESMURDIE, WA"
+    }
+]
